@@ -1,0 +1,54 @@
+# program output, first run 20190131
+# last few fits before crash
+#
+  dataset v.model alpha beta AR MA distribution      mIC log_likelihood elapsed
+1 rt_diff  sGARCH     2    2  1  1        snorm 7.890019      -72121.71   7.793
+[1] 560
+  dataset v.model alpha beta AR MA distribution     mIC log_likelihood elapsed
+1 rt_diff  sGARCH     1    1  0  0         sstd 7.86047      -71858.42   6.027
+[1] 561
+  dataset v.model alpha beta AR MA distribution      mIC log_likelihood elapsed
+1 rt_diff  sGARCH     1    1  0  1         sstd 7.856839      -71822.92   8.567
+[1] 562
+  dataset v.model alpha beta AR MA distribution      mIC log_likelihood elapsed
+1 rt_diff  sGARCH     1    1  1  0         sstd 7.857886      -71832.49   8.273
+[1] 563
+  dataset v.model alpha beta AR MA distribution      mIC log_likelihood elapsed
+1 rt_diff  sGARCH     1    1  1  1         sstd 7.735069      -70707.23   12.16
+[1] 564
+  dataset v.model alpha beta AR MA distribution      mIC log_likelihood elapsed
+1 rt_diff  sGARCH     1    2  0  0         sstd 7.860785      -71859.01   7.896
+[1] 565
+  dataset v.model alpha beta AR MA distribution      mIC log_likelihood elapsed
+1 rt_diff  sGARCH     1    2  0  1         sstd 7.857152      -71823.49  10.584
+[1] 566
+  dataset v.model alpha beta AR MA distribution      mIC log_likelihood elapsed
+1 rt_diff  sGARCH     1    2  1  0         sstd 7.858199      -71833.06   9.442
+[1] 567
+  dataset v.model alpha beta AR MA distribution      mIC log_likelihood elapsed
+1 rt_diff  sGARCH     1    2  1  1         sstd 7.735388      -70707.85  13.586
+[1] 568
+  dataset v.model alpha beta AR MA distribution      mIC log_likelihood elapsed
+1 rt_diff  sGARCH     2    1  0  0         sstd 7.858476      -71837.89   7.841
+[1] 569
+  dataset v.model alpha beta AR MA distribution      mIC log_likelihood elapsed
+1 rt_diff  sGARCH     2    1  0  1         sstd 7.854957      -71803.42  11.399
+[1] 570
+  dataset v.model alpha beta AR MA distribution      mIC log_likelihood elapsed
+1 rt_diff  sGARCH     2    1  1  0         sstd 7.855858      -71811.65  10.402
+[1] 571
+  dataset v.model alpha beta AR MA distribution      mIC log_likelihood elapsed
+1 rt_diff  sGARCH     2    1  1  1         sstd 7.734884      -70703.23  13.866
+[1] 572
+  dataset v.model alpha beta AR MA distribution      mIC log_likelihood elapsed
+1 rt_diff  sGARCH     2    2  0  0         sstd 7.858728       -71837.9   8.741
+[1] 573
+  dataset v.model alpha beta AR MA distribution      mIC log_likelihood elapsed
+1 rt_diff  sGARCH     2    2  0  1         sstd 7.855209      -71803.42  12.059
+[1] 574
+  dataset v.model alpha beta AR MA distribution      mIC log_likelihood elapsed
+1 rt_diff  sGARCH     2    2  1  0         sstd 7.856109      -71811.65  14.188
+[1] 575
+  dataset v.model alpha beta AR MA distribution      mIC log_likelihood elapsed
+1 rt_diff  sGARCH     2    2  1  1         sstd 7.734774      -70699.93  18.609
+[1] 576
