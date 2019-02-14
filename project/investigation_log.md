@@ -4,7 +4,7 @@ Can a recurrent neural network learn volatility (conditional variance) of energy
 
 ## Data
 
-2 years of real-time and day-ahead wholesale energy prices from [PJM](https://www.pjm.com/markets-and-operations/energy.aspx) (Aug 2002 - Aug 2004), the US mid-Atlantic RTO/ISO. This is average data for the whole market, expressed in [dollars per megawatt-hour.](https://www.pjm.com/en/Glossary#index_L)
+2 years (Aug 2002 - Aug 2004)of real-time and day-ahead wholesale energy prices from [PJM](https://www.pjm.com/markets-and-operations/energy.aspx), the US mid-Atlantic RTO/ISO. This is average data for the whole market, expressed in [dollars per megawatt-hour.](https://www.pjm.com/en/Glossary#index_L)
 
 Note: in August 2003, found in the middle of this dataset, occured the [Northeast blackout of 2003](https://en.wikipedia.org/wiki/Northeast_blackout_of_2003). This event represents an exogenous shock to the energy market.
 
