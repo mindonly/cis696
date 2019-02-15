@@ -30,6 +30,8 @@ R code was written to search for the best-fitting GARCH model among three likely
 
 Typical parameters were searched: GARCH(p, q) from 1 -> 2 and AR MA parameters from 0 -> 1. Guidance in this area provided by the [GARCH models with R Datacamp course.](https://www.datacamp.com/courses/garch-models-in-r)
 
+Criteria were minimizing the mean of information criteria(Akaike, Bayes, Shibata, Hannan-Quinn) or maximizing the log-likelihood function.
+
 Results:
 1. Day-ahead log-return data
   * model       - gjrGARCH
