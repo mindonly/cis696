@@ -56,3 +56,4 @@ Results:
 ### Weight regularization, testing subset
 
 * Single-layer LSTM with dropout, recurrent dropout, and weight regularization.
+ - 64 nodes, L1 and L2 regularization
