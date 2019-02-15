@@ -59,3 +59,5 @@ Results:
 
 * Single-layer LSTM with dropout, recurrent dropout, and weight regularization.
  - 64 nodes, L1 and L2 regularization
+ - to specify a GPU in R/Keras, set environment variable CUDA_VISIBLE_DEVICES:
+  * Sys.setenv(CUDA_VISIBLE_DEVICES = 0 or 1)
