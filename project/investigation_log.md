@@ -67,3 +67,9 @@ Results:
   - kernel_regularizer = regularizer_l1(0.001), recurrent_regularizer = regularizer_l2(0.01),
   - lookback = 240, step = 1, delay = 12, batch_size = 12
   - steps_per_epoch = 500, epochs = 50
+- gw meeting update
+  - find PoC data to show approach is sound
+    - ozone, astro, etc.
+  - tighten prediction windows
+  - combine CONV + LSTM
+  - test_data generator
