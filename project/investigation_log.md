@@ -77,5 +77,5 @@ Results:
 
 #### 2019-02-16
 - targeted Nvidia P6000, this works now.
-- made R code more modular for easier experiment iterations
+- made R code more modular for easier experiment iterations ```gtools::defmacro()```
 - adjusted learning rate of rmsprop from 0.001 -> 0.01
