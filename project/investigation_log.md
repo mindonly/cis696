@@ -17,16 +17,16 @@ Chollet & Allaire's generator-based framework from their 2018 book, "Deep Learni
 * Python/Keras approach re-written for R/Keras.
 * Browser-based RStudio session tunneled through SSH on ghost employed for convenient coding/visualiation.
 * Chollet & Allaire's temperature forecasting example implement for sanity-checking on new system ghost.
-* Naive baseline MSE of ___ found.
+* Naive baseline MSE of 0.8749 found.
 * Pricing data is re-assessed in terms of log-returns, the "hourly log-percentage price change" commonly used in finance.
 
 ## 28 Jan 2019 (snow week)
 ### GARCH hyper-parameter search
 
-R code was written to search for the best-fitting GARCH model among three likely sub-model types:
-* sGARCH
-* gjrGARCH
-* csGARCH
+R code was written using [rugarch](https://cran.r-project.org/web/packages/rugarch/index.html) to search for the best-fitting GARCH model among three likely sub-model types:
+* sGARCH    - (Bollerslev, 1986) standard GARCH model
+* gjrGARCH  - (Glosten et al., 1993) models positive and negative shocks asymmetrically (i.e. in Econ/Finance negative shocks are deeper)
+* csGARCH   - (Lee & Engle, 1999) decomposes  the  conditional  variance  into  a  permanent and transitory component so as to investigate the long- and short-run movements of volatility
 
 Typical parameters were searched: GARCH(p, q) from 1 -> 2 and AR MA parameters from 0 -> 1. Guidance in this area provided by the [GARCH models with R Datacamp course.](https://www.datacamp.com/courses/garch-models-in-r)
 
