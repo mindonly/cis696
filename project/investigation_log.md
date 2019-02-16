@@ -58,8 +58,9 @@ Results:
 ### Weight regularization, testing subset
 
 * Single-layer LSTM with dropout, recurrent dropout, and weight regularization.
- - 64 nodes, L1 and L2 regularization
- - to specify a GPU in R/Keras, set envvar Sys.setenv("CUDA_VISIBLE_DEVICES" = 0 or 1)
+  - 64 nodes, L1 and L2 regularization
+  - to specify a GPU in R/Keras, set env.var Sys.setenv("CUDA_VISIBLE_DEVICES" = 0 or 1)
+    - this works now, env.var must be set before ```library(keras)```
 
 #### 2019-02-15
 - 1 layer LSTM, 64 nodes
@@ -73,3 +74,8 @@ Results:
   - tighten prediction windows
   - combine CONV + LSTM
   - test_data generator
+
+#### 2019-02-16
+- targeted Nvidia P6000, this works now.
+- made R code more modular for easier experiment iterations
+- adjusted learning rate of rmsprop from 0.001 -> 0.01
