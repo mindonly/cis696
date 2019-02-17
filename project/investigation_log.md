@@ -12,6 +12,9 @@ Note: in August 2003, found in the middle of this dataset, occured the [Northeas
 
 Chollet & Allaire's generator-based framework from their 2018 book, "Deep Learning with R".
 
+## Current Loss Graphs
+Available on [RPubs](http://rpubs.com/mindonly)
+
 ## January
 
 * Python/Keras approach re-written for R/Keras.
