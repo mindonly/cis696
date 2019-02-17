@@ -83,3 +83,8 @@ Results:
     - CONV1D + LSTM
     - remove observed price column from dataset
 
+#### 2019-02-17
+- results with a CONV1D+LSTM seem more promising on the day-ahead dataset
+  - able to get MSE of ~0.15 on validation (any learning seems to hit a wall around 20 epochs)
+- managed to program a multi-gpu model using Keras
+  - however model running on both the TITAN V and P6000 at the same time had no speed-up, it was slower
