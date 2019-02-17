@@ -78,4 +78,8 @@ Results:
 #### 2019-02-16
 - targeted Nvidia P6000, this works now.
 - made R code more modular for easier experiment iterations ```gtools::defmacro()```
-- adjusted learning rate of rmsprop from 0.001 -> 0.01
+- ISSUE: all of the sudden getting NaN training loss
+  - possible solutions:
+    - CONV1D + LSTM
+    - remove observed price column from dataset
+
