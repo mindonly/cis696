@@ -9,8 +9,9 @@ library(rugarch)
 library(hashmap)
 library(ggfortify)
 library(PerformanceAnalytics)
-   # specify NVIDIA GPU; 0 = TITAN V, 1 = Quadro P6000; before keras
-#Sys.setenv("CUDA_VISIBLE_DEVICES" = 0)
+
+# specify NVIDIA GPU; 0 = TITAN V, 1 = Quadro P6000; before keras
+# Sys.setenv("CUDA_VISIBLE_DEVICES" = 0)
 library(tensorflow)
 library(keras)
 
@@ -507,57 +508,70 @@ run_dense_model <- function() {
    )
 }
 
-   # deep learning model function
-run_deep_model <- function (conv_units, ks, lstm_units, ps, spe, eps) {
+   # set up sequential deep learning model
+run_deep_model <- function(conv_units, ks, lstm_units, ps, spe, eps) {
    model_start_time <- proc.time()
-   
-   # experimental
-   with(tf$device("/cpu:0"), {
-      
-      model <- keras_model_sequential() %>%
-         
-         layer_conv_1d(filters = conv_units, 
-                       kernel_size = ks, 
-                       activation = "relu",
-                       input_shape = list(NULL, dim(data)[[-1]])) %>%
-         
-         #layer_max_pooling_1d(pool_size = ps) %>%
-         layer_average_pooling_1d(pool_size = ps) %>%
-         
-         layer_conv_1d(filters = conv_units, 
-                       kernel_size = ks, 
-                       activation = "relu") %>%
-         
-         layer_lstm(units = lstm_units, 
-                    dropout = 0.1,
-                    recurrent_dropout = 0.1) %>%
-                    
-         layer_dense(units = 1)
-   
-   })
-   
-   # experimental
-   parallel_model <- multi_gpu_model(model, gpus = 2)
-   
-   parallel_model %>% compile(optimizer = optimizer_rmsprop(), 
+   model <- keras_model_sequential() %>%
+      layer_conv_1d(filters = conv_units, 
+                    kernel_size = ks, 
+                    activation = "relu",
+                    input_shape = list(NULL, dim(data)[[-1]])) %>%
+      layer_max_pooling_1d(pool_size = ps) %>%
+      layer_conv_1d(filters = conv_units, 
+                    kernel_size = ks, 
+                    activation = "relu") %>%
+      layer_lstm(units = lstm_units, 
+                 dropout = 0.1,
+                 recurrent_dropout = 0.1) %>%
+      layer_dense(units = 1)
+   model %>% compile(optimizer = optimizer_rmsprop(),
                      loss = "mse")
-   
-   # print(model)
-   # print(parallel_model)
-   
-   # history <- model %>% fit_generator(
-   history <- parallel_model %>% fit_generator(
+   history <- model %>% fit_generator(
       train_gen,
       steps_per_epoch = spe,
       epochs = eps,
       validation_data = val_gen,
       validation_steps = val_steps
    )
-   
    model_elapsed_time <- proc.time() - model_start_time
    print(model_elapsed_time)
    
-   return(list(def=parallel_model, hist=history))
+   return(list(def=model, hist=history))
+}
+
+   # set up parallel deep learning model
+run_parallel_deep_model <- function (conv_units, ks, lstm_units, ps, spe, eps) {
+   model_start_time <- proc.time()
+      # create template model on CPU
+   with(tf$device("/cpu:0"), {
+      model <- keras_model_sequential() %>%
+         layer_conv_1d(filters = conv_units, 
+                       kernel_size = ks, 
+                       activation = "relu",
+                       input_shape = list(NULL, dim(data)[[-1]])) %>%
+         layer_max_pooling_1d(pool_size = ps) %>%
+         layer_conv_1d(filters = conv_units, 
+                       kernel_size = ks, 
+                       activation = "relu") %>%
+         layer_lstm(units = lstm_units, 
+                    dropout = 0.1,
+                    recurrent_dropout = 0.1) %>%
+         layer_dense(units = 1)
+   })
+   p_model <- multi_gpu_model(model, gpus = 2)
+   p_model %>% compile(optimizer = optimizer_rmsprop(), 
+                     loss = "mse")
+   history <- p_model %>% fit_generator(
+      train_gen,
+      steps_per_epoch = spe,
+      epochs = eps,
+      validation_data = val_gen,
+      validation_steps = val_steps
+   )
+   model_elapsed_time <- proc.time() - model_start_time
+   print(model_elapsed_time)
+   
+   return(list(def=p_model, hist=history))
 }
 ## END MODELS
 
@@ -591,23 +605,20 @@ run_deep_model <- function (conv_units, ks, lstm_units, ps, spe, eps) {
 #    }
 # }
 
-prelim()
-data_prep("PJM")
-   # neural_net_prep(dataset, shuffle, lookback, step, delay, batch_size)
-   #
-neural_net_prep("da", TRUE, 480, 2, 2, 48)
-   # run_deep_model(conv_units, kernel_size, lstm_units, pool_size, steps_per_epoch, epochs)
-   #
-model <- run_deep_model(64, 4, 128, 4, 300, 40)
 
-print(model$def)
-plot(model$hist)
-
-mean(model$hist$metrics$loss)
-mean(model$hist$metrics$val_loss)
-
-max(model$hist$metrics$val_loss)
-min(model$hist$metrics$val_loss)
-
-max(model$hist$metrics$val_loss) - min(model$hist$metrics$val_loss)
+# prelim()
+# data_prep("PJM")
+#    # neural_net_prep(dataset, shuffle, lookback, step, delay, batch_size)
+#    #
+# neural_net_prep("da", TRUE, 480, 2, 2, 48)
+#    # run_deep_model(conv_units, kernel_size, lstm_units, pool_size, steps_per_epoch, epochs)
+#    #
+# model <- run_deep_model(64, 4, 128, 4, 250, 40)
+# print(model$def)
+# plot(model$hist)
+# mean(model$hist$metrics$loss)
+# mean(model$hist$metrics$val_loss)
+# max(model$hist$metrics$val_loss)
+# min(model$hist$metrics$val_loss)
+# max(model$hist$metrics$val_loss) - min(model$hist$metrics$val_loss)
 ## END MAIN
